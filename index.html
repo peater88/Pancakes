@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Best Pancake Recipe</title>
 
-  <!-- Strukturovaná data pro Google -->
+  <!-- Structured Data for SEO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,7 +43,7 @@
       padding: 20px;
       line-height: 1.6;
     }
-    h1 {
+    h1, h2 {
       text-align: center;
       color: #d2691e;
     }
@@ -61,7 +61,7 @@
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      margin-top: 30px;
+      margin-top: 20px;
       border-radius: 10px;
     }
     .video-container iframe {
@@ -87,12 +87,23 @@
       margin-top: 40px;
       color: #888;
     }
+    .yt-button {
+      display: inline-block;
+      background: #d2691e;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <div class="content">
-    
-    <!-- Počasí podle lokace -->
+
+    <!-- Počasí -->
     <div class="weather-box" id="weather">🌍 Zjišťuji počasí ve vaší oblasti...</div>
 
     <h1>🥞 The Best Pancake Recipe</h1>
@@ -116,19 +127,31 @@
     <img src="images/palacinka1.jpeg" alt="Stack of pancakes">
     <img src="images/palacinka2.jpeg" alt="Holding a pancake">
 
-    <h2>🎥 Watch how I make them:</h2>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/Ytvh6QM8nMQ" 
-              allowfullscreen 
-              title="Pancake Video"></iframe>
-    </div>
+    <!-- 🎥 VIDEOS SEKCE -->
+    <section id="videos" style="margin-top: 60px;">
+      <h2>🎥 Videos</h2>
+      <p style="text-align:center; font-size: 16px; color:#555;">Podívejte se, jak připravuji své oblíbené palačinky!</p>
 
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/Ytvh6QM8nMQ" 
+                allowfullscreen 
+                title="Pancake Video"></iframe>
+      </div>
+
+      <div style="text-align: center;">
+        <a href="https://www.youtube.com/@tvuj-kanal" target="_blank" class="yt-button">
+          🔔 Sleduj více videí na YouTube
+        </a>
+      </div>
+    </section>
+
+    <!-- Aktualizace -->
     <div class="footer-update">
       🕓 Poslední aktualizace: <span id="last-update"></span>
     </div>
   </div>
 
-  <!-- JS: Počasí podle IP -->
+  <!-- Počasí podle IP -->
   <script>
     fetch("https://ipapi.co/json")
       .then(res => res.json())
@@ -150,7 +173,7 @@
       });
   </script>
 
-  <!-- JS: Datum aktualizace -->
+  <!-- Datum -->
   <script>
     const d = new Date();
     document.getElementById("last-update").textContent = d.toLocaleDateString("cs-CZ");
