@@ -84,3 +84,10 @@
   </div>
 </body>
 </html>
+
+<p>🕓 Poslední aktualizace: <span id="last-update"></span></p>
+
+<script>
+  const d = new Date();
+  document.getElementById("last-update").textContent = d.toLocaleDateString("cs-CZ");
+</script>
