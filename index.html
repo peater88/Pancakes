@@ -1,28 +1,19 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <!-- Google Analytics (volitelné) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PPV5JZK5XJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-PPV5JZK5XJ');
-  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>True Pancakes</title>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Best Pancake Recipe</title>
-
-  <!-- Structured Data -->
+  <!-- Strukturovaná data (SEO) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "True Pancakes",
-    "image": "https://www.truepancakes.com/images/logo.png",
     "url": "https://www.truepancakes.com",
-    "telephone": "+420123456789",
+    "image": "https://www.truepancakes.com/images/logo.png",
+    "description": "Nejlepší recepty na palačinky – jednoduše, chutně a s láskou.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Palačinková 1",
@@ -30,8 +21,7 @@
       "postalCode": "11000",
       "addressCountry": "CZ"
     },
-    "description": "Nejlepší recepty na palačinky, které si zamilujete! Inspirace, videa, tipy a triky.",
-    "openingHours": "Mo-Su 00:00-23:59"
+    "telephone": "+420123456789"
   }
   </script>
 
@@ -44,14 +34,14 @@
       line-height: 1.6;
     }
 
-    h1, h2 {
-      text-align: center;
-      color: #d2691e;
-    }
-
     .content {
       max-width: 700px;
       margin: auto;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #d2691e;
     }
 
     img {
@@ -94,27 +84,56 @@
       margin-top: 40px;
       color: #888;
     }
+
+    /* 🎥 VIDEOS panel */
+    .videos-box {
+      position: fixed;
+      top: 160px;
+      left: 20px;
+      width: 180px;
+      background-color: #fff2e0;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
+    .videos-box h3 {
+      margin: 0 0 10px 0;
+      color: #d2691e;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    #video-links {
+      display: none;
+    }
+
+    /* 📱 RESPONSIVNÍ úprava */
+    @media screen and (max-width: 768px) {
+      .videos-box {
+        position: static;
+        width: 100%;
+        margin: 20px 0;
+        box-shadow: none;
+      }
+
+      .videos-box h3 {
+        text-align: center;
+      }
+
+      #video-links {
+        text-align: center;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <!-- 🎥 VIDEOS PANEL VLEVO -->
-  <div style="
-    position: fixed;
-    top: 160px;
-    left: 20px;
-    width: 180px;
-    background-color: #fff2e0;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    font-family: Arial, sans-serif;
-    z-index: 9999;
-  ">
-    <h3 style="margin: 0 0 10px 0; color: #d2691e; font-size: 18px; cursor: pointer;" onclick="toggleVideos()">
-      🎥 Videos
-    </h3>
-    <div id="video-links" style="display: none;">
+  <!-- 🎥 VIDEOS MODUL -->
+  <div class="videos-box">
+    <h3 onclick="toggleVideos()">🎥 Videos</h3>
+    <div id="video-links">
       <a href="https://www.youtube.com/watch?v=Ytvh6QM8nMQ" target="_blank" 
          style="color: #444; text-decoration: none; font-size: 14px;">
         👉 Pancake Recipe Video
@@ -123,37 +142,32 @@
   </div>
 
   <div class="content">
-    <!-- Počasí -->
-    <div class="weather-box" id="weather">🌍 Zjišťuji počasí ve vaší oblasti...</div>
+    <div class="weather-box" id="weather">🌍 Zjišťuji počasí...</div>
 
     <h1>🥞 The Best Pancake Recipe</h1>
-    <p>These pancakes are fluffy, quick, and super easy to make! Here's my favorite recipe – it makes about 25 pancakes:</p>
+    <p>Fluffy, easy and totally delicious. This is my go-to recipe for the best pancakes ever!</p>
 
     <h2>Ingredients:</h2>
     <ul>
       <li>1000 ml milk</li>
       <li>4 eggs</li>
-      <li>500 g plain flour (all-purpose flour)</li>
-      <li>1 tablespoon of rum (optional – but I love it!)</li>
-      <li>A little butter for the pan (ideally, use a pan with a white surface made for pancakes)</li>
+      <li>500 g flour</li>
+      <li>1 tbsp rum (optional)</li>
+      <li>Butter for the pan</li>
     </ul>
 
     <h2>Instructions:</h2>
-    <p>In a large bowl, mix together the milk, eggs, and rum. Gradually add the flour while whisking to create a smooth batter. I use a hand whisk and add the flour one spoonful at a time to avoid lumps.</p>
-    <p>Now heat up your pan – this is key! A well-heated pan helps ensure your first pancake is perfect. Use a soup ladle to portion the batter – I use about half a ladle per pancake to keep them nice and thin.</p>
-    <p>Add a bit of butter to the pan, pour in the batter, and tilt the pan to spread it evenly. You'll see the bottom starts to brown – that’s your sign to flip it. You can even try flipping it mid-air for fun 😊 (they don’t stick).</p>
-    <p>The second side cooks faster – so watch out not to burn it! Then continue: butter, batter, and repeat. Enjoy your pancakes! 😋</p>
+    <p>Mix milk, eggs and rum. Slowly add flour while whisking. Use half a ladle per pancake. Flip when golden. Enjoy!</p>
 
-    <img src="images/palacinka1.jpeg" alt="Stack of pancakes">
+    <img src="images/palacinka1.jpeg" alt="Pancakes stacked">
     <img src="images/palacinka2.jpeg" alt="Holding a pancake">
 
-    <!-- Aktualizace -->
     <div class="footer-update">
-      🕓 Poslední aktualizace: <span id="last-update"></span>
+      🕓 Last update: <span id="last-update"></span>
     </div>
   </div>
 
-  <!-- JS: Počasí -->
+  <!-- 🌤️ WEATHER + LAST UPDATE -->
   <script>
     fetch("https://ipapi.co/json")
       .then(res => res.json())
@@ -161,28 +175,21 @@
         const lat = loc.latitude;
         const lon = loc.longitude;
         const city = loc.city;
-
         return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
           .then(res => res.json())
           .then(data => {
             const w = data.current_weather;
-            document.getElementById("weather").textContent = 
-              `🌤️ Aktuální počasí pro ${city}: ${w.temperature} °C, vítr ${w.windspeed} km/h`;
+            document.getElementById("weather").textContent =
+              `🌤️ Weather in ${city}: ${w.temperature} °C, wind ${w.windspeed} km/h`;
           });
       })
       .catch(() => {
-        document.getElementById("weather").textContent = "Nepodařilo se načíst počasí.";
+        document.getElementById("weather").textContent = "Unable to load weather.";
       });
-  </script>
 
-  <!-- JS: Poslední aktualizace -->
-  <script>
     const d = new Date();
     document.getElementById("last-update").textContent = d.toLocaleDateString("cs-CZ");
-  </script>
 
-  <!-- JS: Videos rozbalení -->
-  <script>
     function toggleVideos() {
       const box = document.getElementById("video-links");
       box.style.display = box.style.display === "none" ? "block" : "none";
