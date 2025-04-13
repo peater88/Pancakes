@@ -10,12 +10,11 @@
     gtag('config', 'G-PPV5JZK5XJ');
   </script>
 
-  <!-- Meta a SEO -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Best Pancake Recipe</title>
 
-  <!-- Structured Data (pro Google bota) -->
+  <!-- Strukturovaná data pro Google -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -73,6 +72,15 @@
       height: 100%;
       border: 0;
     }
+    .weather-box {
+      text-align: center;
+      background: #fff2e0;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #444;
+    }
     .footer-update {
       text-align: center;
       font-size: 14px;
@@ -83,6 +91,10 @@
 </head>
 <body>
   <div class="content">
+    
+    <!-- Počasí podle lokace -->
+    <div class="weather-box" id="weather">🌍 Zjišťuji počasí ve vaší oblasti...</div>
+
     <h1>🥞 The Best Pancake Recipe</h1>
     <p>These pancakes are fluffy, quick, and super easy to make! Here's my favorite recipe – it makes about 25 pancakes:</p>
 
@@ -116,6 +128,29 @@
     </div>
   </div>
 
+  <!-- JS: Počasí podle IP -->
+  <script>
+    fetch("https://ipapi.co/json")
+      .then(res => res.json())
+      .then(loc => {
+        const lat = loc.latitude;
+        const lon = loc.longitude;
+        const city = loc.city;
+
+        return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
+          .then(res => res.json())
+          .then(data => {
+            const w = data.current_weather;
+            document.getElementById("weather").textContent = 
+              `🌤️ Aktuální počasí pro ${city}: ${w.temperature} °C, vítr ${w.windspeed} km/h`;
+          });
+      })
+      .catch(() => {
+        document.getElementById("weather").textContent = "Nepodařilo se načíst počasí.";
+      });
+  </script>
+
+  <!-- JS: Datum aktualizace -->
   <script>
     const d = new Date();
     document.getElementById("last-update").textContent = d.toLocaleDateString("cs-CZ");
