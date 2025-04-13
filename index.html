@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PPV5JZK5XJ"></script>
@@ -9,10 +9,33 @@
     gtag('js', new Date());
     gtag('config', 'G-PPV5JZK5XJ');
   </script>
-  
+
+  <!-- Meta a SEO -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Best Pancake Recipe</title>
+
+  <!-- Structured Data (pro Google bota) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "True Pancakes",
+    "image": "https://www.truepancakes.com/images/logo.png",
+    "url": "https://www.truepancakes.com",
+    "telephone": "+420123456789",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Palačinková 1",
+      "addressLocality": "Praha",
+      "postalCode": "11000",
+      "addressCountry": "CZ"
+    },
+    "description": "Nejlepší recepty na palačinky, které si zamilujete! Inspirace, videa, tipy a triky.",
+    "openingHours": "Mo-Su 00:00-23:59"
+  }
+  </script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -50,6 +73,12 @@
       height: 100%;
       border: 0;
     }
+    .footer-update {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+      color: #888;
+    }
   </style>
 </head>
 <body>
@@ -81,13 +110,15 @@
               allowfullscreen 
               title="Pancake Video"></iframe>
     </div>
+
+    <div class="footer-update">
+      🕓 Poslední aktualizace: <span id="last-update"></span>
+    </div>
   </div>
+
+  <script>
+    const d = new Date();
+    document.getElementById("last-update").textContent = d.toLocaleDateString("cs-CZ");
+  </script>
 </body>
 </html>
-
-<p>🕓 Poslední aktualizace: <span id="last-update"></span></p>
-
-<script>
-  const d = new Date();
-  document.getElementById("last-update").textContent = d.toLocaleDateString("cs-CZ");
-</script>
