@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,11 +13,11 @@
     "name": "True Pancakes",
     "url": "https://www.truepancakes.com",
     "image": "https://www.truepancakes.com/images/logo.png",
-    "description": "Nejlepší recepty na palačinky – jednoduše, chutně a s láskou.",
+    "description": "Best pancake recipes – simple, tasty, and made with love.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Palačinková 1",
-      "addressLocality": "Praha",
+      "addressLocality": "Prague",
       "postalCode": "11000",
       "addressCountry": "CZ"
     },
@@ -86,10 +86,9 @@
     }
 
     /* 🎥 VIDEOS panel */
-    .videos-box {
+    .videos-box,
+    .history-box {
       position: fixed;
-      top: 160px;
-      left: 20px;
       width: 180px;
       background-color: #fff2e0;
       padding: 15px;
@@ -98,31 +97,47 @@
       z-index: 999;
     }
 
-    .videos-box h3 {
+    .videos-box {
+      top: 160px;
+      left: 20px;
+    }
+
+    .history-box {
+      top: 360px;
+      left: 20px;
+      z-index: 998;
+    }
+
+    .videos-box h3,
+    .history-box h3 {
       margin: 0 0 10px 0;
       color: #d2691e;
       font-size: 18px;
       cursor: pointer;
     }
 
-    #video-links {
+    #video-links,
+    #history-articles {
       display: none;
+      font-size: 14px;
+      color: #444;
+      line-height: 1.4;
     }
 
     /* 📱 RESPONSIVNÍ úprava */
     @media screen and (max-width: 768px) {
-      .videos-box {
+      .videos-box,
+      .history-box {
         position: static;
         width: 100%;
         margin: 20px 0;
         box-shadow: none;
       }
 
-      .videos-box h3 {
-        text-align: center;
-      }
-
-      #video-links {
+      .videos-box h3,
+      .history-box h3,
+      #video-links,
+      #history-articles {
         text-align: center;
       }
     }
@@ -141,8 +156,21 @@
     </div>
   </div>
 
+  <!-- 📜 HISTORY MODUL -->
+  <div class="history-box">
+    <h3 onclick="toggleHistory()">📜 History</h3>
+    <div id="history-articles">
+      <strong>The History of Pancakes:</strong><br><br>
+      Pancakes are one of the oldest foods known to humanity. Their origin goes back to ancient Greece and Rome, where simple batter was cooked on hot stones.<br><br>
+      In the Middle Ages, pancakes spread across Europe – every culture gave them a twist: crêpes in France, palacsinta in Hungary, and fluffy stacks in the US.<br><br>
+      Legend says the famous Austrian dessert Kaiserschmarrn was born from a failed pancake at the imperial court.<br><br>
+      Today, pancakes are more than breakfast – they’re comfort food, tradition, and creativity on a plate. From jam to salmon, pancakes connect people across the world.
+    </div>
+  </div>
+
+  <!-- 🥞 MAIN CONTENT -->
   <div class="content">
-    <div class="weather-box" id="weather">🌍 Zjišťuji počasí...</div>
+    <div class="weather-box" id="weather">🌍 Detecting weather...</div>
 
     <h1>🥞 The Best Pancake Recipe</h1>
     <p>Fluffy, easy and totally delicious. This is my go-to recipe for the best pancakes ever!</p>
@@ -167,7 +195,7 @@
     </div>
   </div>
 
-  <!-- 🌤️ WEATHER + LAST UPDATE -->
+  <!-- 🌤️ WEATHER + JS -->
   <script>
     fetch("https://ipapi.co/json")
       .then(res => res.json())
@@ -188,10 +216,15 @@
       });
 
     const d = new Date();
-    document.getElementById("last-update").textContent = d.toLocaleDateString("cs-CZ");
+    document.getElementById("last-update").textContent = d.toLocaleDateString("en-GB");
 
     function toggleVideos() {
       const box = document.getElementById("video-links");
+      box.style.display = box.style.display === "none" ? "block" : "none";
+    }
+
+    function toggleHistory() {
+      const box = document.getElementById("history-articles");
       box.style.display = box.style.display === "none" ? "block" : "none";
     }
   </script>
