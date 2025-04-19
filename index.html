@@ -83,6 +83,36 @@
       color: #999;
       margin-top: 50px;
     }
+
+    .video-section {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .video-section h2 {
+      font-size: 1.75rem;
+      color: #b85c00;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      max-width: 720px;
+      margin: 20px auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
   </style>
 </head>
 <body>
@@ -110,6 +140,13 @@
 
     <img src="images/palacinka1.jpeg" alt="Pancakes stacked">
     <img src="images/palacinka2.jpeg" alt="Holding a pancake">
+
+    <div class="video-section">
+      <h2>🎥 Watch the Recipe in Action</h2>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/Ytvh6QM8nMQ" allowfullscreen></iframe>
+      </div>
+    </div>
 
     <div class="footer-update">
       🕓 Last update: <span id="last-update"></span>
